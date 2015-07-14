@@ -1,3 +1,4 @@
 *.pyc
 .idea/
+test_data/
 db.sqlite3
