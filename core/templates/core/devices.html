@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+{% block content %}
+    Overall {{ devices.count }} devices<br>
+	<ul>
+        {% for device in devices %}
+            <li>{{ device.device_name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

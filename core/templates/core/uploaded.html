@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+{% block content %}
+	{{ devices.count }} devices added<br>
+    <ul>
+        {% for device in devices %}
+            <li>{{ device }}</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

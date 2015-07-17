@@ -1,4 +1,5 @@
 *.pyc
 .idea/
+documents/
 test_data/
 db.sqlite3
