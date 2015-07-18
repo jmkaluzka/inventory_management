@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'crispy_forms'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -70,6 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'inventory.wsgi.application'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 # Database

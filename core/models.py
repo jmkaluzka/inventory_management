@@ -1,5 +1,4 @@
 from django.db import models
-from .forms import UploadFileForm
 
 class Document(models.Model):
     name = models.CharField(max_length=50, blank=True)

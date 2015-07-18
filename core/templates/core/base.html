@@ -1,6 +1,28 @@
 {% load staticfiles %}
 <html>
-	<h1><a href="{% url 'core.views.index' %}">Inventory management</a></h1>
-    {% block content %}
-    {% endblock %}
+    <head>
+        <title>{% block title %} Inventory management{% endblock %}</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
+    </head>
+    <body>
+        {% include 'core/header.html' %}
+        <div class="jumbotron">
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="container">
+            <footer>
+                <p><a href="mailto:jmkaluzka@gmail.com">&copy; Justyna Kałużka</a></p>
+            </footer>
+        </div>
+
+
+    </body>
 </html>
