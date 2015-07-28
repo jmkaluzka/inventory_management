@@ -10,6 +10,7 @@ def upload_file(request):
         form = UploadFileForm(request.POST, request.FILES)
         print(form.is_valid())
         if form.is_valid():
+            print(request.FILES['csv_file'])
             n = ''.join([i for i in str(request.FILES['csv_file']) if i.isalnum()])
             newfile = Document.objects.create(name = n, path = request.FILES['csv_file'])
             print(newfile.id)
@@ -39,7 +40,7 @@ def uploaded(request, file_id=None):
             if valid:
                 Device.objects.create(device_name=name)
                 devices.append(name)
-
+    print("count",len(devices))
     return render(request, 'core/uploaded.html',{'devices':devices})
 
 def list_devices(request):

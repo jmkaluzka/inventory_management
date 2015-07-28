@@ -2,4 +2,5 @@
 .idea/
 documents/
 test_data/
+inventory/local_settings.py
 db.sqlite3

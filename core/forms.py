@@ -1,11 +1,22 @@
 import os
 from django import forms
 from .models import Document
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Field, ButtonHolder
 
+class UploadFileForm(forms.Form):
 
-class UploadFileForm(forms.ModelForm):
+    csv_file = forms.FileField(
+        label='Select a file',
+        help_text='Only csv files'
+    )
+
+    def clean(self):
+        cleaned_data = super(UploadFileForm, self).clean()
+        file = cleaned_data.get('csv_file')
+        name, extension = os.path.splitext(file.name)
+        print(name,extension)
+        if extension[1:] != 'csv':
+            raise forms.ValidationError('Wrong format, you need a csv file')
+    '''        
     class Meta:
         model = Document
         fields = '__all__'
@@ -19,3 +30,4 @@ class UploadFileForm(forms.ModelForm):
             )
         )
         self.helper.form_show_labels = False
+    '''
