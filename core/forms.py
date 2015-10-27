@@ -1,6 +1,7 @@
 import os
 from django import forms
 from .models import Document
+from registration.forms import RegistrationFormTermsOfService
 
 class UploadFileForm(forms.Form):
 
@@ -31,3 +32,5 @@ class UploadFileForm(forms.Form):
         )
         self.helper.form_show_labels = False
     '''
+class UserProfileRegistrationForm(RegistrationFormTermsOfService):
+    field = forms.CharField()

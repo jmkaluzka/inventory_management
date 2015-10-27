@@ -9,7 +9,7 @@ class DocumentAdmin(admin.ModelAdmin):
 class DevicetAdmin(admin.ModelAdmin):
     list_display = ('device_name',)
 
-admin.site.register(Employee)
-admin.site.register(Student)
+#admin.site.register(Employee)
+#admin.site.register(Student)
 
 # Register your models here.

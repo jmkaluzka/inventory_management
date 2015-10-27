@@ -45,3 +45,6 @@ def uploaded(request, file_id=None):
 
 def list_devices(request):
     return render(request, 'core/devices.html', {'devices':Device.objects.all()})
+
+def index(request):
+    return render(request, 'core/index.html',{})
