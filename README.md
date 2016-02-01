@@ -1,7 +1,6 @@
 # Inventory management
 
-To work on this repository it is recommended to use the virtualenvwrapper. Makefile simplifies django commands like creating admin, migrations and so on.
-
+To work on this repository it is recommended to use the virtualenvwrapper and installation script.
 ## Installation 
 
 ### Install script
@@ -20,6 +19,7 @@ git clone https://github.com/parodia/inventory_management.git
 
 # create virtual environments
 mkvirtualenv inventory
+workon inventory
 
 # install requirements
 pip install -r requirements.txt
