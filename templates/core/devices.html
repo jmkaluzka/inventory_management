@@ -1,11 +1,18 @@
-{% extends "base.html" %}
-{% block content %}
-    <p><a class="btn btn-primary btn-lg" href="{% url 'core.views.upload_file' %}" role="button">Upload your csv file...</a></p>
-	<a href=""></a><br>
-	Overall {{ devices.count }} devices<br>
-	<ul>
+<table class="table table-hover">
+        <thead>
+            <tr>
+                <th>SN</th>
+                <th>Name</th>
+                <th>Floor</th>
+                <th>Room</th>
+            </tr>
+        </thead>
         {% for device in devices %}
-            <li>{{ device.device_name }}</li>
+            <tr>
+            <td>{{ device.sn }}</td>
+            <td>{{ device.device_name }}</td>
+            <td>{{ device.floor }}</td>
+            <td>{{ device.room }}</td>
+        </tr>
         {% endfor %}
-    </ul>
-{% endblock content %}
+    </table>

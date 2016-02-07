@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+    <p><a class="btn btn-primary btn-lg" href="{% url 'core.views.upload_file' %}" role="button">Upload your csv file...</a></p>
+	<a href=""></a><br>
+	Overall {{ devices.count }} devices<br>
+    {% include "core/devices.html" %}
+{% endblock content %}

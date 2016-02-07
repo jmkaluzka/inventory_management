@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-	{{ devices|length }} devices added<br>
-    <ul>
-        {% for device in devices %}
-            <li>{{ device }}</li>
-        {% endfor %}
-    </ul>
+	<p>{{ devices|length }} devices added</p>
+    {% include "core/devices.html" %}
 {% endblock content %}
