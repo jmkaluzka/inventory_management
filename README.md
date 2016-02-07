@@ -23,4 +23,7 @@ workon inventory
 
 # install requirements
 pip install -r requirements.txt
+
+# load initial data (groups, admin, users)
+./manage.py loaddata initial.json
 ```
