@@ -12,14 +12,11 @@ from .models import Document, Device
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
-        print(form.is_valid())
         if form.is_valid():
-            print(request.FILES['csv_file'])
             n = ''.join(
                     [i for i in str(request.FILES['csv_file']) if i.isalnum()])
             newfile = Document.objects.create(name=n,
                                               path=request.FILES['csv_file'])
-            print(newfile.id)
             return HttpResponseRedirect('/uploaded/%d/' % newfile.id)
     else:
         form = UploadFileForm()
@@ -29,7 +26,6 @@ def upload_file(request):
 def uploaded(request, file_id=None):
     file = Document.objects.get(id=file_id)
     f = open(str(file.path), 'r')
-    print(type(f))
     datareader = csv.reader(f, delimiter=',')
 
     valid = False
@@ -48,7 +44,6 @@ def uploaded(request, file_id=None):
                                           floor=floor,
                                           room=generate_room(floor, 20))
                 devices.append(d)
-    print("count", len(devices))
     return render(request, 'core/uploaded.html', {'devices': devices})
 
 

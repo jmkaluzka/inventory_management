@@ -1,19 +1,10 @@
+from django.contrib.auth.models import User, AbstractBaseUser, AbstractUser
 from django.db import models
-from django.contrib.auth.models import User, AbstractBaseUser, BaseUserManager
 
 
 class Document(models.Model):
     name = models.CharField(max_length=50, blank=True)
     path = models.FileField(upload_to='documents', blank=True)
-
-'''
-class Employee(User):
-    password = models.CharField(max_length=50)
-
-class Student(User):
-    students_number = models.IntegerField()
-    remarks = models.TextField(max_length=300)
-'''
 
 
 class Device(models.Model):
@@ -24,3 +15,21 @@ class Device(models.Model):
     room = models.IntegerField(blank=True, null=True)
     # model = models.CharField(max_length=50, default="model")
     # production_year = models.IntegerField()
+
+
+class CustomUser(AbstractBaseUser):
+
+    name = models.CharField(max_length=50, unique=True)
+    first_name = models.CharField(max_length=30, null=True, blank=True)
+    last_name = models.CharField(max_length=30, null=True, blank=True)
+    email = models.EmailField(unique=True)
+
+    USERNAME_FIELD = 'email'
+    # REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    def get_full_name(self):
+        return self.first_name + " " + self.last_name
+
+    def get_short_name(self):
+        return self.email
+
