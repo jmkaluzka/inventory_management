@@ -27,3 +27,6 @@ pip install -r requirements.txt
 # load initial data (groups, admin, users)
 ./manage.py loaddata initial.json
 ```
+
+## Documentation
+Thesis written in Latex is available on [Dropbox](https://www.dropbox.com/sh/vvd67vk56t49vjt/AADbrp45zqpCkeiCDArthLP-a?dl=0) and continuously being prepared 
