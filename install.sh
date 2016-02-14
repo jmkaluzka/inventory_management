@@ -19,5 +19,9 @@ workon ${VIRTUALENV}
 echo "Installing requirements"
 cd "${PROJECT_DIR}" && ${INVENTORY_VIRTUALENV_PIP} install -r "${REQ_PIP}"
 
+echo "Installing frontend things"
+./manage.py bower install
+./manage.py collectstatic
+
 echo "Loading initial data"
 ./manage.py loaddata initial.json
