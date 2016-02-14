@@ -21,8 +21,10 @@ git clone https://github.com/parodia/inventory_management.git
 mkvirtualenv inventory
 workon inventory
 
-# install requirements
+# install requirements and frontend dependencies
 pip install -r requirements.txt
+./manage.py bower install
+./manage.py collectstatic
 
 # load initial data (groups, admin, users)
 ./manage.py loaddata initial.json
