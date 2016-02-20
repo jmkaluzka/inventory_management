@@ -49,10 +49,10 @@ def uploaded(request, file_id=None):
 
 
 def list_devices(request):
-    if request.POST["floor"].isdigit():
-        devices = Device.objects.filter(floor=request.POST["floor"])
-    else:
-        devices = Device.objects.all()
+    floor = request.POST.get('floor', None)
+    devices = Device.objects.all()
+    if floor:
+        devices = devices.filter(floor=floor)
     return render(request, 'core/list_devices.html',
                   {'devices': devices})
 

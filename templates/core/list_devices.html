@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-    {#	<a href=""></a><br>#}
-	Overall {{ devices.count }} devices<br>
+	<h4>Overall {{ devices.count }} devices</h4>
+
+    <form class="form-inline" method="post">{% csrf_token %}
+        <div class="form-group">
+            <select name="floor" class="form-control">
+                <option value="" selected="selected">All floors</option>
+                {% for i in "12345" %}
+                    <option value="{{ i }}">{{ i }} floor</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input class="btn btn-default" type=submit value="Show">
+    </form>
+
     {% include "core/devices.html" %}
 {% endblock content %}
