@@ -2,10 +2,11 @@ import csv
 import random
 import string
 
+from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
-from .forms import UploadFileForm
+from .forms import UploadFileForm, DeviceForm
 from .models import Document, Device
 
 
@@ -20,7 +21,7 @@ def upload_file(request):
             return HttpResponseRedirect('/uploaded/%d/' % newfile.id)
     else:
         form = UploadFileForm()
-    return render(request, 'core/upload.html', {'form': form})
+    return render(request, 'core/form.html', {'form': form})
 
 
 def uploaded(request, file_id=None):
@@ -56,8 +57,46 @@ def list_devices(request):
                   {'devices': devices})
 
 
+def show_device(request, pk):
+    devices = Device.objects.filter(pk=pk)
+    if not devices:
+        message = "Sorry, device not found"
+        return render(request, 'core/message.html', {'message': message})
+    elif len(devices) != 1:
+        message = "More than one device of the some id, something is wrong"
+        return render(request, 'core/message.html', {'message': message})
+    else:
+        return render(request, 'core/device.html', {'devices': devices})
+
+
+def delete_device(request, pk):
+    Device.objects.filter(pk=pk).delete()
+    message = "Device " + pk + " deleted."
+    return render(request, 'core/message.html', {'message': message})
+
+
+def edit_device(request, pk):
+    try:
+        device = Device.objects.get(pk=pk)
+    except ObjectDoesNotExist as e:
+        message = "Sorry, device not found"
+        return render(request, 'core/message.html', {'message': message})
+    if request.method == 'POST':
+        form = DeviceForm(request.POST, instance=device)
+        if form.is_valid():
+            print(device.floor)
+            device = form.save()
+            print(device.floor)
+            return redirect('device', pk=pk)
+        else:
+            print(form.errors)
+    else:
+        form = DeviceForm(instance=device)
+    return render(request, 'core/form.html', {'form': form})
+
+
 def profile_page(request):
-    return render(request, 'core/profile.html', {})
+    return render(request, 'core/profile.html', {'user': request.user})
 
 
 def index(request):

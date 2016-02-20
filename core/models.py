@@ -11,8 +11,8 @@ class Device(models.Model):
     # producer = models.CharField(max_length=50)
     device_name = models.CharField(max_length=300, blank=True, null=True)
     sn = models.CharField(max_length=10, primary_key=True, editable=False)
-    floor = models.IntegerField(blank=True, null=True)
-    room = models.IntegerField(blank=True, null=True)
+    floor = models.PositiveIntegerField(blank=True, null=True)
+    room = models.PositiveIntegerField(blank=True, null=True)
     # model = models.CharField(max_length=50, default="model")
     # production_year = models.IntegerField()
 
@@ -25,7 +25,7 @@ class CustomUser(AbstractBaseUser):
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ['first_name', 'last_name']
+    REQUIRED_FIELDS = ['first_name', 'last_name']
 
     def get_full_name(self):
         return self.first_name + " " + self.last_name

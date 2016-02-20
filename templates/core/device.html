@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    {% include "core/devices.html" %}
+    {% with devices|first as device %}
+        <p>
+            <a class="btn btn-danger" href="{% url 'delete_device' pk=device.sn %}" role="button">Delete</a>
+            <a class="btn btn-default" href="{% url 'edit_device' pk=device.sn %}" role="button">Edit</a>
+            <a class="btn btn-success" href="" role="button">Lend</a>
+        </p>
+    {% endwith %}
+{% endblock content %}

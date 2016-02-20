@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <form action="{% url 'list_devices' %}" method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-          <select name="floor" class="form-control">
-            <option value="all" selected="selected">All floors</option>
-            {% for i in "12345" %}
-                <option value="{{ i }}">{{ i }} floor</option>
-            {% endfor %}
-          </select>
+    <div class="row">
+        <div class="col-md-4">
+            <p><a class="btn btn-primary" href="{% url 'core.views.upload_file' %}" role="button">Upload new csv file...</a></p>
+
+            <form action="{% url 'list_devices' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <select name="floor" class="form-control">
+                    <option value="all" selected="selected">All floors</option>
+                    {% for i in "12345" %}
+                        <option value="{{ i }}">{{ i }} floor</option>
+                    {% endfor %}
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-default">Show devices</button>
+            </form>
         </div>
-
-        <button type="submit" class="btn btn-default">Show devices</button>
-    </form>
-
-    </p>
+    </div>
 
 
 {% endblock content %}
