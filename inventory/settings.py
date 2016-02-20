@@ -74,10 +74,20 @@ TEMPLATES = [
     },
 ]
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'inventory',
+        'USER': 'inv',
+        'PASSWORD': 'inv',
+        'HOST': 'localhost',
+        'PORT': ''
+    }
+}
+
 WSGI_APPLICATION = 'inventory.wsgi.application'
 
 
-CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
 # Internationalization
@@ -96,8 +106,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
@@ -111,6 +122,9 @@ BOWER_INSTALLED_APPS = (
     'jquery',
 )
 
+#crispy forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 AUTH_USER_MODEL = 'core.CustomUser'
 
 #django-registration-redux
@@ -120,8 +134,12 @@ LOGIN_REDIRECT_URL = '/'  # The page you want users to arrive at after they succ
 LOGIN_URL = '/accounts/login/'  # The page users are directed to if they are not logged in,
                                 # and are trying to access pages requiring authentication
 SITE_ID = 1
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST ='smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ''  # to be overriden in local_settings
+EMAIL_HOST_PASSWORD = ''  # to be overriden in local_settings
+EMAIL_USE_TLS = True
 
 try:
     from .local_settings import *
