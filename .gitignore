@@ -5,3 +5,4 @@ test_data/
 inventory/local_settings.py
 /components
 /staticfiles
+/core/migrations
