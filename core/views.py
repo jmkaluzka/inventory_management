@@ -84,9 +84,7 @@ def edit_device(request, pk):
     if request.method == 'POST':
         form = DeviceForm(request.POST, instance=device)
         if form.is_valid():
-            print(device.floor)
             device = form.save()
-            print(device.floor)
             return redirect('device', pk=pk)
         else:
             print(form.errors)
