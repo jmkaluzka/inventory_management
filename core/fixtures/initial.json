@@ -14,22 +14,29 @@
     }
   },
   {
-    "model": "auth.user",
+    "model": "core.CustomUser",
     "pk": 1,
     "fields": {
-      "username": "admin",
-      "is_active": true,
+      "email": "admin@mail.com",
       "is_superuser": true,
-      "is_staff": true,
       "password": "pbkdf2_sha256$24000$rWDsao5W1sHZ$YtcI1mhLWyXL4eli3Z0KxII0ON349kKPo34kTb9KZMo="
     }
   },
   {
-    "model": "auth.user",
+    "model": "core.CustomUser",
     "pk": 2,
     "fields": {
-      "username": "j",
+      "email": "j@gmail.com",
       "password": "pbkdf2_sha256$24000$bjbcXH86JXmR$vULnyZZEyfDbsSRWtLE/GvNpc3kjBmB4qMz214yzWfw="
+    }
+  },
+  {
+    "model": "core.Student",
+    "pk": 123456,
+    "fields": {
+      "name": "Jan",
+      "surname": "Kowalski",
+      "email": "jan.kowalski@gmail.com"
     }
   }
 ]
